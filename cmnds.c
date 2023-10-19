@@ -1,5 +1,7 @@
 #include "monty.h"
 
+int val;
+
 /**
  * pu_sh - This function adds new element to stack
  * @stack: Points to the adre of the frst elemtent in the stack

@@ -22,7 +22,7 @@ int get_opcode(stack_t **stack, unsigned int line_number)
 		{"nop", nop},
 		{NULL, NULL}
 	};
-	printf("Inside get_opcode: opcode=%s, line_number=%d\n", comnd, line_number);
+
 	while (file[t].opcode)
 	{
 		if (strcmp(file[t].opcode, comnd) == 0)
@@ -37,8 +37,7 @@ int get_opcode(stack_t **stack, unsigned int line_number)
 				val = atoi(value);
 			}
 			file[t].f(stack, line_number);
-			printf("Processing line: %d\n", line_number);
-			return (0);
+		return (0);
 		}
 		t++;
 	}
