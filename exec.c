@@ -19,27 +19,30 @@ int get_opcode(stack_t **stack, unsigned int line_number)
 		{"pall", pa_ll},
 		{"pint", pi_nt},
 		{"pop", po_p},
+		{"nop", nop},
 		{NULL, NULL}
 	};
-
+	printf("Inside get_opcode: opcode=%s, line_number=%d\n", comnd, line_number);
 	while (file[t].opcode)
 	{
 		if (strcmp(file[t].opcode, comnd) == 0)
 		{
-			if (strcmp(comnd, "push"))
+			if (strcmp(comnd, "push") == 0)
 			{
-				if (isdigit(*value) == 1)
-					val = atoi(value);
-				else
+				if (value == NULL || !isdigit(*value))
+				{
+					fprintf(stderr, "L%d: usage: push integer", line_number);
 					return (1);
+				}
+				val = atoi(value);
 			}
 			file[t].f(stack, line_number);
-			break;
+			printf("Processing line: %d\n", line_number);
+			return (0);
 		}
 		t++;
 	}
-	if (!file[t].opcode)
-		return (-1);
-	return (0);
+	fprintf(stderr, "L%d: Unknown instruction %s\n", line_number, comnd);
+	return (1);
 }
 
