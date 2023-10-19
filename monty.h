@@ -68,4 +68,7 @@ int get_opcode(stack_t **stack, unsigned int line_number);
 void argument_error(void);
 void openf_error(void);
 
+/* Helper */
+stack_t *addnode(int data);
+
 #endif
