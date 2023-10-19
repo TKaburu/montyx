@@ -27,21 +27,19 @@ int get_opcode(stack_t **stack, unsigned int line_number)
 	{
 		if (strcmp(file[t].opcode, comnd) == 0)
 		{
-			if (strcmp(comnd, "push") == 0)
+			if (strcmp(comnd, "push"))
 			{
-				if (value == NULL || !isdigit(*value))
-				{
-					fprintf(stderr, "L%d: usage: push integer", line_number);
+				if (isdigit(*value) == 1)
+					val = atoi(value);
+				else
 					return (1);
-				}
-				val = atoi(value);
 			}
 			file[t].f(stack, line_number);
-		return (0);
+			break;
 		}
 		t++;
 	}
-	fprintf(stderr, "L%d: Unknown instruction %s\n", line_number, comnd);
-	return (1);
+	if (!file[t].opcode)
+		return (-1);
+	return (0);
 }
-

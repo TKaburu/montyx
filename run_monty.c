@@ -1,6 +1,5 @@
 #include "monty.h"
 
-
 /**
  * run_monty - This function runs the monty interprater
  * @argc: arcument count
@@ -11,7 +10,7 @@
 
 int run_monty(int argc, char **argv)
 {
-	char *line = NULL, *file_loc = NULL;
+	char *point = NULL, *line = NULL, *file_loc = NULL;
 	char *opcode, *del = " \n\t\r";
 	FILE *file;
 	stack_t *stack = NULL;
@@ -28,13 +27,12 @@ int run_monty(int argc, char **argv)
 	while (getline(&line, &n, file) == -1)
 	{
 		line_number++;
-		printf("Pleae work");
-		opcode = strtok(line, del);
+		opcode = strtok(point, del);
 		if (opcode == NULL || strlen(opcode) == 0)
 			continue;
-		printf("Pleae work");
 		if (get_opcode(&stack, line_number) != 0)
 		{
+			fprintf(stderr, "L%d: unknown instruction %s\n", line_number, opcode);
 			free(line);
 			fclose(file);
 			return (EXIT_FAILURE);
@@ -58,9 +56,7 @@ int run_monty(int argc, char **argv)
 int main(int argc, char **argv)
 {
 
-	int go_monty = run_monty(argc, argv);
+	run_monty(argc, argv);
 
-;
-	return (go_monty);
+	return (0);
 }
-

@@ -56,7 +56,7 @@ void pu_sh(stack_t **stack, unsigned int line_number);
 void pa_ll(stack_t **stack, unsigned int line_number);
 void pi_nt(stack_t **stack, unsigned int line_number);
 void po_p(stack_t **stack, unsigned int line_number);
-stack_t *add_node(int val);
+void nop(stack_t **stack, unsigned int line_number);
 
 /* get opcode */
 
