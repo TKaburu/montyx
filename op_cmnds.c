@@ -50,7 +50,7 @@ void pa_ll(stack_t **stack, unsigned int line_number)
 }
 
 /**
- * pi_nt - Thi function prints the value at the top of stack
+ * pi_nt - This function prints the value at the top of stack
  * @stack: points to the adress of first element
  * @line_number: Keeps trck of line number
  *
