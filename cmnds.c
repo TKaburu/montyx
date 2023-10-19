@@ -15,7 +15,7 @@ void pu_sh(stack_t **stack, unsigned int line_number)
 
 	(void)line_number;
 
-	new_element = malloc(sizeof(stack_t));;
+	new_element = malloc(sizeof(stack_t));
 	if (new_element == NULL)
 	{
 		exit(EXIT_FAILURE);
