@@ -9,28 +9,18 @@
 
 void pu_sh(stack_t **stack, unsigned int line_number)
 {
-
 	stack_t *new_element = NULL;
-	int val = 0;
 
 	(void)line_number;
 
-	new_element = malloc(sizeof(stack_t));
-	if (new_element == NULL)
-	{
-		exit(EXIT_FAILURE);
-	}
-	new_element->prev = NULL;
-	new_element->n = val;
+	new_element = addnode(val);
 
-	if (*stack)
-	{
-		(*stack)->prev = new_element;
-	}
 	new_element->next = *stack;
+	if (*stack != NULL)
+		(*stack)->prev = new_element;
 	*stack = new_element;
-
 }
+
 
 /**
  * pa_ll - This functionprints the element of the stack
@@ -100,4 +90,17 @@ void po_p(stack_t **stack, unsigned int line_number)
 		*stack = NULL;
 		(*stack)->prev = NULL;
 	}
+}
+
+/**
+ * nop - a function that doesn’t do anything
+ * @stack: points to the adress of first element
+ * @line_number: Keeps trck of line number
+ *
+ */
+
+void nop(stack_t **stack, unsigned int line_number)
+{
+	(void)stack;
+	(void)line_number;
 }
